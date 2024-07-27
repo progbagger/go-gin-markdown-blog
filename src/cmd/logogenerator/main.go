@@ -1,7 +1,7 @@
 package main
 
 import (
-	"blog/drawer"
+	"blog/pkg/drawer"
 	"image"
 	"image/color"
 	"log"

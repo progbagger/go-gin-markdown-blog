@@ -1,0 +1,52 @@
+body {
+  font-family: sans-serif;
+  background-color: rgb(238, 238, 238);
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  font-size: large;
+}
+
+header {
+  text-align: center;
+  background-color: white;
+  border-radius: 0 0 25px 25px;
+  padding: 20px 10px 20px 10px;
+  margin-top: 0;
+  justify-content: center;
+}
+
+header>* {
+  display: inline-block;
+}
+
+header>img {
+  height: 80px;
+  float: left;
+}
+
+header>a {
+  float: right;
+  margin-top: 30px;
+}
+
+.input-title {
+  width: 100%;
+}
+
+.input-text {
+  margin-top: 10px;
+  width: 100%;
+  resize: vertical;
+  min-height: 100px;
+  margin-bottom: 10px;
+}
+
+.wrapper {
+  margin: 20px 20% 0 20%;
+  background-color: white;
+  padding: 10px 20px 10px 20px;
+  border-radius: 25px;
+}

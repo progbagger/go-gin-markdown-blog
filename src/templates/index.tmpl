@@ -4,15 +4,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/static/images/amazing_logo.png">
+  <link rel="stylesheet" href="/static/css/style.css">
   <title>My Amazing Blog</title>
 </head>
 
 <body>
-  <header>
-    <img class="logo" src="amazing_logo.png" alt="Amazing logo!">
-    <h1 class="title">My Amazing Blog</h1>
-    <a></a>
-  </header>
+  {{ template "header.tmpl" }}
+
+  <div class="wrapper">
+    <h2 class="title">Articles</h2>
+    <ul class="list">
+      {{ range .posts }}
+        <li>
+          <hr>
+          <h3 class="title">{{ .Title }}</h3>
+          <div class="text" style="white-space: pre-wrap">{{ .Text }}</div>
+        </li>
+      {{ end }}
+    </ul>
+    <div class="nav">
+      <button class="nav-button" type=button onclick="location.href='/articles/?page=1'" {{ if .isPrevButtonDisabled }} disabled {{ else }} {{ end }}>&lt;&lt;</button>
+      <button class="nav-button" type=button onclick="location.href='/articles/?page={{ .prevPage }}'" {{ if .isPrevButtonDisabled }} disabled {{ else }} {{ end }}>&lt;</button>
+      <span class="page-counter">Page {{ .page }} | Total {{ .totalPages }}</span>
+      <button class="nav-button" type=button onclick="location.href='/articles/?page={{ .nextPage }}'" {{ if .isNextButtonDisabled }} disabled {{ else }} {{ end }}>&gt;</button>
+      <button class="nav-button" type=button onclick="location.href='/articles/?page={{ .totalPages }}'" {{ if .isNextButtonDisabled }} disabled {{ else }} {{ end }}>&gt;&gt;</button>
+    </div>
+  </div>
 </body>
 
 </html>

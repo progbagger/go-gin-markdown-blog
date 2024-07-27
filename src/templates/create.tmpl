@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/static/images/amazing_logo.png">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <title>My Amazing Blog - Create</title>
+</head>
+
+<body>
+  {{ template "header.tmpl" }}
+
+  <div class="wrapper">
+    <h1 class="title">Create article</h1>
+
+    <form method="POST">
+      <div>
+        <input class="input-title" type="text" name="title" placeholder="Title" required autofocus>
+      </div>
+      <div>
+        <textarea class="input-text" name="text" placeholder="Your beautiful text" required></textarea>
+      </div>
+      <div>
+        <button>Create</button>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>
