@@ -1,0 +1,44 @@
+services:
+  builder:
+    image: golang:1.22.4
+    volumes:
+      - binaries:/app
+      - .:/src
+    working_dir: /src
+    command: go build -o /app/myblog-binary cmd/server/main.go
+
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    expose:
+      - 5432
+
+  unzipper:
+    image: garthk/unzip
+    volumes:
+      - .:/src
+      - binaries:/app
+    command: -uo /src/assets.zip -d /app/
+
+  runner:
+    image: ubuntu
+    volumes:
+      - binaries:/app
+    ports:
+      - 8888:8888
+    working_dir: /app
+    environment:
+      - POSTGRES_HOST=postgres
+    depends_on:
+      builder:
+        condition: service_completed_successfully
+      postgres:
+        condition: service_started
+      unzipper:
+        condition: service_completed_successfully
+    command: ./myblog-binary
+
+volumes:
+  binaries:
