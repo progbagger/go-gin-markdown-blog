@@ -8,6 +8,8 @@ import (
 	"math/rand"
 )
 
+//go:generate go run main.go
+
 // source: https://colorswall.com/palette/102
 var rainbowColors = []color.Color{
 	color.RGBA{R: 255, G: 0, B: 0, A: 255},     // red
